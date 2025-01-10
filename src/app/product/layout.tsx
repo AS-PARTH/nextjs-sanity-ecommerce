@@ -15,17 +15,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = '//script.crazyegg.com/pages/scripts/0127/8659.js';
-                script.fetchPriority = 'high';
-                document.head.appendChild(script);
-              })();
-            `,
-          }}
+          type="text/javascript"
+          src="//script.crazyegg.com/pages/scripts/0127/8659.js"
+          async
         ></script>
       </head>
       <body>
