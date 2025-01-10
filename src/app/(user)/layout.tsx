@@ -14,6 +14,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="text/javascript"
+          src="//script.crazyegg.com/pages/scripts/0127/8659.js"
+          async
+        ></script>
+      </head>
       <body>
         <Navbar />
         {children}
