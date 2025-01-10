@@ -1,7 +1,7 @@
 "use client"
 import Navbar from "@/src/components/Navbar";
-import Script from "next/script"; // Use Next.js Script component
-import React, { useState, useEffect } from "react";
+import Script from "next/script";
+import React, { useEffect } from "react";
 import "../style/globals.css";
 
 declare global {
@@ -20,26 +20,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [isVariantReady, setIsVariantReady] = useState(false);
-// console.log(window?.CE2?.LOADED_SCRIPTS,"window.CE2");
-
   useEffect(() => {
-    const checkCrazyEgg = () => {
-      // Example: Detect Crazy Egg or variant readiness
-      if (window.CE2) {
-        setIsVariantReady(true);
+    // Function to ensure Crazy Egg script is ready and variant changes are applied
+    const checkVariantReady = () => {
+      if (window.CE2 && typeof window.CE2 === "object") {
+        console.log("Crazy Egg variant applied");
       } else {
-        setTimeout(checkCrazyEgg, 100); // Retry until Crazy Egg is ready
+        setTimeout(checkVariantReady, 50); // Retry every 50ms
       }
     };
 
-    checkCrazyEgg();
+    checkVariantReady(); // Start checking immediately
   }, []);
 
   return (
     <html lang="en">
       <head>
-        {/* Crazy Egg Script */}
         <Script
           src="//script.crazyegg.com/pages/scripts/0127/8659.js"
           strategy="afterInteractive"
@@ -47,17 +43,8 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {!isVariantReady ? (
-          // Loading state while waiting for the variant to be ready
-          <div style={{ textAlign: "center", marginTop: "50px" }}>
-            <p>Loading updated content...</p>
-          </div>
-        ) : (
-          <>
-            <Navbar />
-            {children}
-          </>
-        )}
+        <Navbar />
+        {children}
       </body>
     </html>
   );
