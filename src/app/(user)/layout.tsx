@@ -24,13 +24,17 @@ export default function RootLayout({
     // Function to ensure Crazy Egg script is ready and variant changes are applied
     const checkVariantReady = () => {
       if (window.CE2 && typeof window.CE2 === "object") {
+        document.documentElement.style.visibility = "visible"; // Show the content
         console.log("Crazy Egg variant applied");
       } else {
         setTimeout(checkVariantReady, 50); // Retry every 50ms
       }
     };
 
-    checkVariantReady(); // Start checking immediately
+    // Initially hide the content
+    document.documentElement.style.visibility = "hidden";
+
+    checkVariantReady(); // Start checking for variant readiness
   }, []);
 
   return (
