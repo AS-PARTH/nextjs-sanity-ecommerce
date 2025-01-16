@@ -15,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <link rel="preload" href="/style/globals.css" as="style" />
         <script
           type="text/javascript"
           src="//script.crazyegg.com/pages/scripts/0127/9507.js"
