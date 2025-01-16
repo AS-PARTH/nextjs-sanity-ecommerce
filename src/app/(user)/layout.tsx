@@ -1,5 +1,4 @@
 import Navbar from "@/src/components/Navbar";
-import React from "react";
 import "../style/globals.css";
 
 export const metadata = {
@@ -15,39 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          rel="preload"
-          href="//script.crazyegg.com/pages/scripts/0127/1415.js"
-          as="script"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          href="//script.crazyegg.com/pages/data-scripts/0127/1415/site/%SITE%.json?t=1"
-          as="fetch"
-          fetchPriority="high"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="//script.crazyegg.com/pages/data-scripts/0127/1415/sampling/%SITE%.json?t=1"
-          as="fetch"
-          fetchPriority="high"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="//script.crazyegg.com/pages/abtests-scripts/0127/1415/%SITE%.css"
-          as="style"
-          fetchPriority="high"
-        />
-        <link
-          href="//script.crazyegg.com/pages/abtests-scripts/0127/1415/%SITE%.css"
-          rel="stylesheet"
-        />
         <script
           type="text/javascript"
-          src="//script.crazyegg.com/pages/scripts/0127/1415.js"
+          src="//script.crazyegg.com/pages/scripts/0127/9507.js"
           async
         ></script>
       </head>
