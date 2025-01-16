@@ -15,11 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
+        {/* <script
           type="text/javascript"
           src="//script.crazyegg.com/pages/scripts/0127/8659.js"
           async
-        ></script>
+        ></script> */}
       </head>
       <body>
         <main id="ab-content">
