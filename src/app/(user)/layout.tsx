@@ -15,10 +15,28 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
-          type="text/javascript"
           src="//script.crazyegg.com/pages/scripts/0127/9507.js"
-          async
+          async={false}  
         ></script>
+
+        {/* Critical CSS to prevent flicker */}
+        <style>{`
+          html {
+            visibility: hidden;
+            opacity: 0;
+          }
+        `}</style>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('load', function() {
+                document.documentElement.style.visibility = 'visible';
+                document.documentElement.style.opacity = '1';
+              });
+            `,
+          }}
+        />
       </head>
       <body>
         <main id="ab-content">
