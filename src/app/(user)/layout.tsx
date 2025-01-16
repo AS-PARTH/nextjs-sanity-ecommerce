@@ -1,5 +1,4 @@
 import Navbar from "@/src/components/Navbar";
-import React, { useEffect } from "react";
 import "../style/globals.css";
 
 export const metadata = {
@@ -16,24 +15,31 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
-          type="text/javascript"
           src="//script.crazyegg.com/pages/scripts/0127/9507.js"
-          async
+          async={false}  
         ></script>
 
-        {/* Inline CSS for flicker prevention */}
+        {/* Critical CSS to prevent flicker */}
         <style>{`
-          #ab-content {
+          html {
             visibility: hidden;
+            opacity: 0;
           }
         `}</style>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('load', function() {
+                document.documentElement.style.visibility = 'visible';
+                document.documentElement.style.opacity = '1';
+              });
+            `,
+          }}
+        />
       </head>
       <body>
         <main id="ab-content">
-          {/* Content visibility restored when the page is ready */}
-          <script>{`
-            document.getElementById('ab-content').style.visibility = 'visible';
-          `}</script>
           <Navbar />
           {children}
         </main>
