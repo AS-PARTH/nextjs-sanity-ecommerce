@@ -31,7 +31,18 @@ export default function RootLayout({
             j.async=true;
             j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
             f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-WHGD2JXS');`}
+          })(window,document,'script','dataLayer','GTM-WHGD2JXS');
+          
+          <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HRE3GYM6YZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HRE3GYM6YZ');
+</script>
+          `}
         </script>
       </head>
       <body>
