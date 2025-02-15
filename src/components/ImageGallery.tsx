@@ -7,7 +7,7 @@ interface iAppPage {
   images: any;
 }
 export default function ImageGallery({ images }: iAppPage) {
-  const [bigImage, setBigImage] = useState(images[0]);
+  const [bigImage, setBigImage] = useState(images[0] || []);
   const handleSmallImages = (image: any) => {
     setBigImage(image);
   };
