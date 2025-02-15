@@ -1,6 +1,7 @@
 import Navbar from "@/src/components/Navbar";
-import React, { useEffect } from "react";
 import "../style/globals.css";
+import Script from "next/script";
+import MonthlyUsers from "@/src/components/MonthlyUsers";
 
 export const metadata = {
   title: "Next.js",
@@ -16,34 +17,37 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preload" href="/style/globals.css" as="style" />
-        <script
-          type="text/javascript"
+        {/* CrazyEgg Tracking Script */}
+        <Script
+          strategy="lazyOnload"
           src="//script.crazyegg.com/pages/scripts/0127/9507.js"
-          defer
-        ></script>
-        <script>
-          {`(function(w,d,s,l,i){
-            w[l]=w[l]||[];
-            w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-            var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),
-                dl=l!='dataLayer'?'&l='+l:'';
-            j.async=true;
-            j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        />
+
+        {/* Google Tag Manager */}
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+          (function(w,d,s,l,i){
+            w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
             f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-WHGD2JXS');
-          
-          <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HRE3GYM6YZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HRE3GYM6YZ');
-</script>
           `}
-        </script>
+        </Script>
+
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-HRE3GYM6YZ"
+        />
+        <Script id="ga-script" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HRE3GYM6YZ');
+          `}
+        </Script>
       </head>
       <body>
         <noscript>
@@ -51,11 +55,12 @@ export default function RootLayout({
             src="https://www.googletagmanager.com/ns.html?id=GTM-WHGD2JXS"
             height="0"
             width="0"
-            style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
         <main id="ab-content">
           <Navbar />
+          <MonthlyUsers />
+
           {children}
         </main>
       </body>
